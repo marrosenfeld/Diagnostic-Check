@@ -1,5 +1,6 @@
-data <- read.csv(file="data.csv",head=TRUE,sep=",")
+data <- read.csv(file="dog_data.csv",head=TRUE,sep=",")
 data[is.na(data)] <- 0
+
 
 xy <- c()
 for(i in 1:nrow(data)) {

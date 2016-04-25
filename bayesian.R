@@ -15,9 +15,9 @@ logl <- function(theta,x,y){
   return(loglik)
 }
 
-beta0<-seq(from=1,to=3,length=50)
-beta1<-seq(from=-1,to=1,length=50)
-beta2<-seq(from=-1,to=1,length=50)
+beta0<-seq(from=1.60,to=2.00,length=50)
+beta1<-seq(from=-0.55,to=-0.15,length=50)
+beta2<-seq(from=-0.41,to=-0.01,length=50)
 parameter<-expand.grid(beta0,beta1,beta2)
 
 input$intercept<-1
@@ -25,6 +25,7 @@ X = input[,c(4,1,2)]
 y = input[3]
 
 B<-nrow(parameter)
+print(B)
 post<-numeric(B)
 for (i in 1:B) {
   post[i]<-logl(parameter[i,],X, y)
@@ -32,3 +33,5 @@ for (i in 1:B) {
 
 max(post)
 parameter[which(post==max(post)),] # the mode of the estimate, should be approximately equal to the MLE.
+
+
